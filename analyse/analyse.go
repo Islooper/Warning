@@ -1,7 +1,7 @@
 package analyse
 
 import (
-	"Warning/push"
+	"github.com/Islooper/warning/push"
 )
 
 type WarningProcess struct {

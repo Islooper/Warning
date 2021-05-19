@@ -1,8 +1,8 @@
 package message
 
 import (
-	"Warning/analyse"
 	"errors"
+	"github.com/Islooper/warning/analyse"
 )
 
 //type Reader interface {

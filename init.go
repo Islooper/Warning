@@ -1,8 +1,8 @@
 package alarm
 
 import (
-	"Warning/analyse"
-	"Warning/push"
+	"github.com/Islooper/warning/analyse"
+	"github.com/Islooper/warning/push"
 )
 
 var (

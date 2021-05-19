@@ -1,4 +1,4 @@
-module Warning
+module github.com/Islooper/warning
 
 go 1.13
 
