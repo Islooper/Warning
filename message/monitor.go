@@ -48,10 +48,27 @@ func (m *Message) SendMessage(data string, des string, err error) error {
 	}
 
 	if m.WarningProcess == nil {
+		return errors.New("WarningProcess is empty")
+	}
+
+	msg := ""
+	switch m.Level {
+	case "error":
+		msg = "监控中：\r\n" + m.Name + ":\r\n" + m.Level + ":\r\n" + data + "\r\n==========" + des + "\r\n" + err.Error()
+
+	case "info":
+		msg = "监控中：\r\n" + m.Name + ":\r\n" + m.Level + ":\r\n" + data + "\r\n=========="
+	}
+
+	m.R <- msg
+	return nil
+}
+
+func (m *Message) SetLevel(level string) error {
+	if level == "" {
 		return errors.New("param is empty")
 	}
 
-	msg := "监控中：\r\n" + m.Name + ":\r\n" + m.Level + ":\r\n" + data + "\r\n==========" + des + "\r\n" + err.Error()
-	m.R <- msg
+	m.Level = level
 	return nil
 }
