@@ -5,15 +5,10 @@ import (
 	"github.com/Islooper/warning/push"
 )
 
-var (
-	accessToken string
-	secret      string
-)
-
-func Init(accessToken, secret string) *analyse.WarningProcess {
+func InitWarning(accessToken, secret string) *analyse.WarningProcess {
 	// 初始化
 	//reader := InitReader()
-	writer := InitWriter()
+	writer := InitWriter(accessToken, secret)
 	warningAnalyse := InitWarningAnalyse(writer)
 
 	//go reader.Read(warningAnalyse.R)
@@ -28,7 +23,7 @@ func Init(accessToken, secret string) *analyse.WarningProcess {
 //	return message.NewService("serviceName" , "warning")
 //}
 
-func InitWriter() *push.DingTalk {
+func InitWriter(accessToken, secret string) *push.DingTalk {
 	return push.NewDingTalk(accessToken, secret, "WARNING")
 }
 
