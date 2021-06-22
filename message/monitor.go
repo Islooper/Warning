@@ -51,6 +51,10 @@ func (m *Message) SendMessage(data string, des string, err error) error {
 		return errors.New("WarningProcess is empty")
 	}
 
+	if err.Error() == "" {
+		m.Level = "info"
+	}
+
 	msg := ""
 	switch m.Level {
 	case "error":
@@ -61,14 +65,5 @@ func (m *Message) SendMessage(data string, des string, err error) error {
 	}
 
 	m.R <- msg
-	return nil
-}
-
-func (m *Message) SetLevel(level string) error {
-	if level == "" {
-		return errors.New("param is empty")
-	}
-
-	m.Level = level
 	return nil
 }
